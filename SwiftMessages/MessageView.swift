@@ -162,7 +162,14 @@ extension MessageView {
          directly under the status bar (see the `ContentInsetting` protocol).
          */
         case statusLine = "StatusLine"
-
+        
+        /**
+         A view that can be used to overlay the status bar.
+         Note that this layout will automatically grow taller if displayed
+         directly under the status bar (see the `ContentInsetting` protocol).
+         */
+        case statusLine2 = "StatusLine2"
+        
         /**
          A floating card-style view with elements centered and arranged vertically.
          This view is typically used with `.center` presentation style.         
