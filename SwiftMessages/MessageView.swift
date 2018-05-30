@@ -120,6 +120,40 @@ open class MessageView: BaseView, Identifiable, AccessibleMessage {
         getAccessibleSubviews(view: self.backgroundView)
         return elements
     }
+    
+    /**
+     A convenience function for background color
+     Overridable for custom colors
+     
+     - Parameter theme: The theme type to use.
+     */
+    public func backgroundColor(for theme: Theme) -> UIColor {
+        switch theme {
+        case .info:
+            return UIColor(red: 225.0/255.0, green: 225.0/255.0, blue: 225.0/255.0, alpha: 1.0)
+        case .success:
+            return UIColor(red: 97.0/255.0, green: 161.0/255.0, blue: 23.0/255.0, alpha: 1.0)
+        case .warning:
+            return UIColor(red: 238.0/255.0, green: 189.0/255.0, blue: 34.0/255.0, alpha: 1.0)
+        case .error:
+            return UIColor(red: 249.0/255.0, green: 66.0/255.0, blue: 47.0/255.0, alpha: 1.0)
+        }
+    }
+    
+    /**
+     A convenience function for foreground color
+     Overridable for custom colors
+     
+     - Parameter theme: The theme type to use.
+     */
+    public func foregroundColor(for theme: Theme) -> UIColor {
+        switch theme {
+        case .info:
+            return UIColor.darkText
+        case .success, .warning, .error:
+            return UIColor.white
+        }
+    }
 }
 
 /*
@@ -252,40 +286,6 @@ extension MessageView {
  */
 
 extension MessageView {
-    
-    /**
-     A convenience function for background color
-     Overridable for custom colors
-     
-     - Parameter theme: The theme type to use.
-     */
-    public func backgroundColor(for theme: Theme) -> UIColor {
-        switch theme {
-        case .info:
-            return UIColor(red: 225.0/255.0, green: 225.0/255.0, blue: 225.0/255.0, alpha: 1.0)
-        case .success:
-            return UIColor(red: 97.0/255.0, green: 161.0/255.0, blue: 23.0/255.0, alpha: 1.0)
-        case .warning:
-            return UIColor(red: 238.0/255.0, green: 189.0/255.0, blue: 34.0/255.0, alpha: 1.0)
-        case .error:
-            return UIColor(red: 249.0/255.0, green: 66.0/255.0, blue: 47.0/255.0, alpha: 1.0)
-        }
-    }
-    
-    /**
-     A convenience function for foreground color
-     Overridable for custom colors
-     
-     - Parameter theme: The theme type to use.
-     */
-    public func foregroundColor(for theme: Theme) -> UIColor {
-        switch theme {
-        case .info:
-            return UIColor.darkText
-        case .success, .warning, .error:
-            return UIColor.white
-        }
-    }
     
     /**
      A convenience function for setting some pre-defined colors and icons.
