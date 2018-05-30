@@ -127,7 +127,7 @@ open class MessageView: BaseView, Identifiable, AccessibleMessage {
      
      - Parameter theme: The theme type to use.
      */
-    public func backgroundColor(for theme: Theme) -> UIColor {
+    open func backgroundColor(for theme: Theme) -> UIColor {
         switch theme {
         case .info:
             return UIColor(red: 225.0/255.0, green: 225.0/255.0, blue: 225.0/255.0, alpha: 1.0)
@@ -146,7 +146,7 @@ open class MessageView: BaseView, Identifiable, AccessibleMessage {
      
      - Parameter theme: The theme type to use.
      */
-    public func foregroundColor(for theme: Theme) -> UIColor {
+    open func foregroundColor(for theme: Theme) -> UIColor {
         switch theme {
         case .info:
             return UIColor.darkText
