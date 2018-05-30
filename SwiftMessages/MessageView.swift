@@ -254,6 +254,40 @@ extension MessageView {
 extension MessageView {
     
     /**
+     A convenience function for background color
+     Overridable for custom colors
+     
+     - Parameter theme: The theme type to use.
+     */
+    public func backgroundColor(for theme: Theme) -> UIColor {
+        switch theme {
+        case .info:
+            return UIColor(red: 225.0/255.0, green: 225.0/255.0, blue: 225.0/255.0, alpha: 1.0)
+        case .success:
+            return UIColor(red: 97.0/255.0, green: 161.0/255.0, blue: 23.0/255.0, alpha: 1.0)
+        case .warning:
+            return UIColor(red: 238.0/255.0, green: 189.0/255.0, blue: 34.0/255.0, alpha: 1.0)
+        case .error:
+            return UIColor(red: 249.0/255.0, green: 66.0/255.0, blue: 47.0/255.0, alpha: 1.0)
+        }
+    }
+    
+    /**
+     A convenience function for foreground color
+     Overridable for custom colors
+     
+     - Parameter theme: The theme type to use.
+     */
+    public func foregroundColor(for theme: Theme) -> UIColor {
+        switch theme {
+        case .info:
+            return UIColor.darkText
+        case .success, .warning, .error:
+            return UIColor.white
+        }
+    }
+    
+    /**
      A convenience function for setting some pre-defined colors and icons.
      
      - Parameter theme: The theme type to use.
@@ -261,22 +295,16 @@ extension MessageView {
      */
     public func configureTheme(_ theme: Theme, iconStyle: IconStyle = .default) {
         let iconImage = iconStyle.image(theme: theme)
+        let backgroundColor = self.backgroundColor(for: theme)
+        let foregroundColor = self.foregroundColor(for: theme)
         switch theme {
         case .info:
-            let backgroundColor = UIColor(red: 225.0/255.0, green: 225.0/255.0, blue: 225.0/255.0, alpha: 1.0)
-            let foregroundColor = UIColor.darkText
             configureTheme(backgroundColor: backgroundColor, foregroundColor: foregroundColor, iconImage: iconImage)
         case .success:
-            let backgroundColor = UIColor(red: 97.0/255.0, green: 161.0/255.0, blue: 23.0/255.0, alpha: 1.0)
-            let foregroundColor = UIColor.white
             configureTheme(backgroundColor: backgroundColor, foregroundColor: foregroundColor, iconImage: iconImage)
         case .warning:
-            let backgroundColor = UIColor(red: 238.0/255.0, green: 189.0/255.0, blue: 34.0/255.0, alpha: 1.0)
-            let foregroundColor = UIColor.white
             configureTheme(backgroundColor: backgroundColor, foregroundColor: foregroundColor, iconImage: iconImage)
         case .error:
-            let backgroundColor = UIColor(red: 249.0/255.0, green: 66.0/255.0, blue: 47.0/255.0, alpha: 1.0)
-            let foregroundColor = UIColor.white
             configureTheme(backgroundColor: backgroundColor, foregroundColor: foregroundColor, iconImage: iconImage)
         }
     }
